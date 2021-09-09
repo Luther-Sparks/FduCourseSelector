@@ -3,9 +3,12 @@
 ---
 
 复旦自动选课脚本，仅用于学习交流，禁止使用脚本干扰正常选课流程
-*2021/09/01 新增邮件通知功能*
 
 ### Usage
+
+*2021/09/01 新增邮件通知功能，请修改 email_sender.py*  
+如不需要，请注释掉```main.py 35 line```
+
 #### Step0: clone 脚本至本地
 ```shell
 git clone https://github.com/ZiYang-xie/FduCourseSelector.git
