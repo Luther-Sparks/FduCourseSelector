@@ -2,6 +2,8 @@
 import json
 import re
 import base64
+import pytz
+from datetime import datetime
 from cookie_getter import CookieGetter
 from captcha import read_captcha
 from email_sender import sendEmail
@@ -24,6 +26,9 @@ class CourseSearcher(CookieGetter):
         self.cookies = self.getCookies()
         
     def RunScript(self):
+        datetime.now(tz=pytz.timezone('Asia/Shanghai'))
+        while datetime.now().hour <= 13:
+            continue
         for lessonNo in self.courseIdList:
             self.addCourse(lessonNo)
         
