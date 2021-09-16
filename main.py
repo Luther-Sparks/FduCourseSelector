@@ -32,7 +32,7 @@ class CourseSearcher(CookieGetter):
         while datetime.now().hour < 13 and datetime.now().minute < 59:
             continue
         print(datetime.now())
-        while self.courseIdList and datetime.now.hour <= 13 and datetime.now().minute <= 5:
+        while self.courseIdList and datetime.now().hour <= 13 and datetime.now().minute <= 5:
             for lessonNo in self.courseIdList:
                 if self.addCourse(lessonNo):
                     self.courseIdList.remove(lessonNo)
