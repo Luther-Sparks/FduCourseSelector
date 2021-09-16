@@ -3,7 +3,9 @@ import json
 import re
 import base64
 import pytz
+import os
 from datetime import datetime
+import time
 from cookie_getter import CookieGetter
 from captcha import read_captcha
 from email_sender import sendEmail
@@ -27,11 +29,15 @@ class CourseSearcher(CookieGetter):
         
     def RunScript(self):
         datetime.now(tz=pytz.timezone('Asia/Shanghai'))
-        while datetime.now().hour <= 13:
+        while datetime.now().hour < 13 and datetime.now().minute < 59:
             continue
         print(datetime.now())
-        for lessonNo in self.courseIdList:
-            self.addCourse(lessonNo)
+        while self.courseIdList and datetime.now.hour <= 13 and datetime.now().minute <= 5:
+            for lessonNo in self.courseIdList:
+                if self.addCourse(lessonNo):
+                    self.courseIdList.remove(lessonNo)
+                    time.sleep(0.2)
+            
         
     def addCourse(self, lessonNo):
         res = self.searchCourse(lessonNo)
@@ -41,7 +47,7 @@ class CourseSearcher(CookieGetter):
             print(info)
             #sendEmail(info)
             result = self.selCourse(course_no)
-            return result
+            return True
         else:
             info = "课程 [" + course_name + " " + course_id +"], 目前不可选"
             print(info)
