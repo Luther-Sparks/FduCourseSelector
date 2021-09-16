@@ -29,6 +29,7 @@ class CourseSearcher(CookieGetter):
         datetime.now(tz=pytz.timezone('Asia/Shanghai'))
         while datetime.now().hour <= 13:
             continue
+        print(datetime.now())
         for lessonNo in self.courseIdList:
             self.addCourse(lessonNo)
         
